@@ -39,24 +39,24 @@ function drawText(text, x, y, color){
 const user = {
     x: 0,
     y: canvas.height/2 - 50,
-    width: 10,
+    width: 20,
     height: 100,
-    color: 'BLUE',
+    color: '#60bae6',
     score: 0,
 }
  
 
 // DRAW COMPUTER PADDLE
 const comp = {
-    x: canvas.width - 10,
+    x: canvas.width - 20,
     y: canvas.height/2 - 50,
-    width: 10,
+    width: 20,
     height: 100,
     color: 'RED',
     score: 0,
 }
 
-// DRAW NET
+// DRAW THE NET
 const net = {
     X: canvas.width/2 -2/2,
     y: 0,
@@ -71,7 +71,7 @@ function drawNet(){
     }
 }
 
-// DRAW & MOVE THE BALL
+// DRAW THE BALL
 const ball = {
     x: canvas.width/2,
     y: canvas.height/2,
@@ -80,6 +80,15 @@ const ball = {
     velocityX: 5,
     velocityY: 5,
     color: 'WHITE',
+}
+
+// MOVE THE BALL
+function update(){
+    ball.x +=velocity; X+
+    ball.y +=velocity; Y+
+    if(ball.y + ball.radius > canvas.height || ball.y - ball.radius < 0){
+        velocity = - velocityY;
+    }
 }
 
 // RENDER THE GAME
@@ -101,4 +110,19 @@ const framePerSecond = 50;
 setInterval(game, 1000/framePerSecond);
 
 
-// COLLISION DETECTION
+// COLLISION DETECTION FUNCTION
+function collison (b, p){
+    p.top = p.y;
+    p.bottom = p.y + p.height;
+    p.left = p.x;
+    p.right = p.x + p.width;
+
+    b.top = b.y - b.radius;
+    b.bottom = b.y + b.radius;
+    b.left = b.x - b.radius;
+    b.right = b.x + b.radius;
+
+    return b.right > p.left && b.btop < p.bottom && b.left < p.right && b.bottom > p.top;
+}
+
+// LEFT OFF ON 22 MIN & 30 SECONDS OF VIDEO
