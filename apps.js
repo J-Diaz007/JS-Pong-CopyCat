@@ -93,13 +93,13 @@ const ball = {
     color: 'WHITE',
 }
 
-// // RESET BALL FUNCTION
-// function resetBall(){
-//     ball.x = canvas.width/2;
-//     ball.y = canvas.height/2;
-//     ball.speed = 5;
-//     ball.velocityX = -ball.velocityX;
-// }
+// RESET BALL FUNCTION
+function resetBall(){
+    ball.x = canvas.width/2;
+    ball.y = canvas.height/2;
+    ball.speed = 5;
+    ball.velocityX = -ball.velocityX;
+}
 
 // FUNCTION UPDATES EVERYTHING
 function update(){
@@ -127,30 +127,22 @@ function update(){
         // DIRECTION OF BALL WHEN IT HITS A PADDLE
         let direction = (ball.x < canvas.width/2) ? 1 : -1;
 
-        ball.velocityX =  ball.speed * Math.cos(angleRad);
-        ball.velocityY =  ball.speed * Math.sin(angleRad);
+        ball.velocityX = direction * ball.speed * Math.cos(angleRad);
+        ball.velocityY = ball.speed * Math.sin(angleRad);
 
         // EVERY TIME THE BALL IS HIT THE SPEED INCREASES
-        ball.speed += 0.1;
+        ball.speed += 0.5;
+    }
+
+    // UPDATES THE SCORE & RESETS THE BALL
+    if(ball.x - ball.radius < 0){
+        comp.score++;
+        resetBall();
+    }else if(ball.x + ball.radius > canvas.width){
+        user.score++;
+        resetBall()
     }
 }       
-      
-
- 
-
-    
-
-   
-        
-    // }
-    
-    // // UPDATES THE SCORE & RESETS THE BALL
-    // if(ball.x - ball.radius < 0){
-    //     comp.score++;
-    //     resetBall();
-    // }else if(ball.x + ball.radius > canvas.width){
-    //     user.score++;
-    // }
 
 // // COLLISION DETECTION FUNCTION
 // // b = ball, p = paddle

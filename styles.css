@@ -1,5 +1,14 @@
 body {
+    display: flex;
+    justify-content: center;
+    text-align: center;
     background-color: black;
+}
+
+header {
+    font-size: 4em;
+    color: white;
+    font-family: georgia;
 }
 
 #pong {
