@@ -108,7 +108,7 @@ function update(){
     ball.y += ball.velocityY;
     
     // AI TO CONTROL THE COMP PADDLE
-    let computerLevel = 0.1;
+    const computerLevel = 0.1;
     comp.y += (ball.y - (comp.y + comp.height/2)) * computerLevel;
 
     if(ball.y + ball.radius > canvas.height || ball.y - ball.radius < 0){
@@ -116,16 +116,16 @@ function update(){
     }
 
     // BALL COLLISION
-    let player = (ball.x < canvas.width/2) ? user: comp;
+    const player = (ball.x + ball.radius< canvas.width/2) ? user : comp;
 
     if(collison(ball, player)){
         // WHERE THE BALL HITS THE PADDLE
-        let collidePoint = ball.y - (player.y + player.height/2);
+        const collidePoint = ball.y - (player.y + player.height/2);
         collidePoint = collidePoint/player.height/2;
-        let angleRad = collidePoint * Math.PI/4;
+        const angleRad = collidePoint * Math.PI/4;
 
         // DIRECTION OF BALL WHEN IT HITS A PADDLE
-        let direction = (ball.x < canvas.width/2) ? 1 : -1;
+        const direction = (ball.x < canvas.width/2) ? 1 : -1;
 
         ball.velocityX = direction * ball.speed * Math.cos(angleRad);
         ball.velocityY = ball.speed * Math.sin(angleRad);
@@ -180,5 +180,4 @@ function game(){
 // LOOP
 const framePerSecond = 50;
 setInterval(game, 1000/framePerSecond);
-
 
