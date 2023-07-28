@@ -89,7 +89,14 @@ function update(){
     if(ball.y + ball.radius > canvas.height || ball.y - ball.radius < 0){
         velocity = - velocityY;
     }
+// BALL COLLISION
+    if(collision(ball, player)){
+        
+    }
 }
+
+
+
 
 // RENDER THE GAME
 function render(){
@@ -111,6 +118,7 @@ setInterval(game, 1000/framePerSecond);
 
 
 // COLLISION DETECTION FUNCTION
+// b = ball, p = player
 function collison (b, p){
     p.top = p.y;
     p.bottom = p.y + p.height;
