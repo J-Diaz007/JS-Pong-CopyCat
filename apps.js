@@ -1,13 +1,12 @@
 const canvas = document.getElementById('pong');
 const ctx = canvas.getContext('2d');
 
-// PADDLE FUNCTION
-function drawRect(x, y, w, h, color){
+// RECTANGLE FUNCTION FOR GAME
+function drawRect(x,y,w,h,color){
     ctx.fillStyle = color;
-    ctx.fillRect(x, y, w, h);
+    ctx.fillRect(x,y,w,h);
 }
 
-drawRect(0, 0, canvas.width, canvas.height, 'white');
 
 // CIRCLE FUNCTION
 function drawCircle(x, y, r, color){
@@ -18,26 +17,26 @@ function drawCircle(x, y, r, color){
     ctx.fill();
 }
 
-drawCircle(100, 100, 50, 'white')
 
 // TEXT FUNCTION
 function drawText(text, x, y, color){
     ctx.fillStyle = 'white';
-    ctx.font = '75px fantasy';
-    ctx.fillText(text, x, y);
+    ctx.font = '45px fantasy';
+    ctx.fillText(text,x,y);
 }
 
-// HOW TO MOVE A RECTANGLE TO THE RIGHT
-// let rectX = 0;
-// function render(){
-//     drawRect(0, 0, 600, 400, 'black');
-//     drawRect(rectX, 100, 100, 100, 'white');
-//     rectX = rextX + 100;
-// }
-// setInterval(render, 1000);
+
+// // HOW TO MOVE A RECTANGLE TO THE RIGHT
+// // let rectX = 0;
+// // function render(){
+// //     drawRect(0, 0, 600, 400, 'black');
+// //     drawRect(rectX, 100, 100, 100, 'white');
+// //     rectX = rextX + 100;
+// // }
+// // setInterval(render, 1000);
 
 
-// DRAW USER PADDLE
+// // CREATE USER PADDLE
 const user = {
     x: 0,
     y: canvas.height/2 - 50,
@@ -47,8 +46,16 @@ const user = {
     score: 0,
 }
  
+// CONTROL THE USER'S PADDLE
+canvas.addEventListener('mousemove', movePaddle);
 
-// DRAW COMPUTER PADDLE
+function movePaddle(evt){
+    let rect = canvas.getBoundingClientRect();
+    user.y = evt.clientY - rect.top - user.height/2;
+}
+
+
+// // CREATE COMPUTER PADDLE
 const comp = {
     x: canvas.width - 20,
     y: canvas.height/2 - 50,
@@ -58,22 +65,24 @@ const comp = {
     score: 0,
 }
 
-// DRAW THE NET
+
+// // CREATE THE NET
 const net = {
-    X: canvas.width/2 -2/2,
+    x: canvas.width/2 - 1,
     y: 0,
     width: 2,
     height: 10,
-    color: 'wHITE',
+    color: 'WHITE',
 }
 
+// DRAW THE NET
 function drawNet(){
     for(let i = 0; i <= canvas.height; i+=15){
         drawRect(net.x, net.y + i, net.width, net.height, net.color);
     }
 }
 
-// DRAW THE BALL
+// // DRAW THE BALL
 const ball = {
     x: canvas.width/2,
     y: canvas.height/2,
@@ -84,29 +93,36 @@ const ball = {
     color: 'WHITE',
 }
 
-// RESET BALL FUNCTION
-function resetBall(){
-    ball.x = canvas.width/2;
-    ball.y = canvas.height/2;
-    ball.speed = 5;
-    ball.velocityX = -ball.velocityX;
-}
+// // RESET BALL FUNCTION
+// function resetBall(){
+//     ball.x = canvas.width/2;
+//     ball.y = canvas.height/2;
+//     ball.speed = 5;
+//     ball.velocityX = -ball.velocityX;
+// }
 
-// MOVE THE BALL
+// FUNCTION UPDATES EVERYTHING
 function update(){
-    ball.x +=velocity; X+
-    ball.y +=velocity; Y+
-    if(ball.y + ball.radius > canvas.height || ball.y - ball.radius < 0){
-        velocity = - velocityY;
-    }
-    // BALL COLLISION
-    let user = (ball.x < canvas.width/2) user: comp;
+    // // MOVE THE BALL
+    ball.x += ball.velocityX;
+    ball.y += ball.velocityY;
+    
+    // AI TO CONTROL THE COMP PADDLE
+    let computerLevel = 0.1;
+    comp.y += (ball.y - (comp.y + comp.height/2)) * computerLevel;
 
-    if(collision(ball, user)){
+    if(ball.y + ball.radius > canvas.height || ball.y - ball.radius < 0){
+        ball.velocityY = -ball.velocityY;
+    }
+
+    // BALL COLLISION
+    let player = (ball.x < canvas.width/2) ? user: comp;
+
+    if(collison(ball, player)){
         // WHERE THE BALL HITS THE PADDLE
-        let collidePoint = (ball.y - (user.y + user.height/2));
-        collidePoint = collidePoint/(user.height/2);
-        let angleRad = (Math.PI/4) * collidePoint;
+        let collidePoint = ball.y - (player.y + player.height/2);
+        collidePoint = collidePoint/player.height/2;
+        let angleRad = collidePoint * Math.PI/4;
 
         // DIRECTION OF BALL WHEN IT HITS A PADDLE
         let direction = (ball.x < canvas.width/2) ? 1 : -1;
@@ -116,20 +132,28 @@ function update(){
 
         // EVERY TIME THE BALL IS HIT THE SPEED INCREASES
         ball.speed += 0.1;
-        
     }
-    
-    // UPDATES THE SCORE & RESETS THE BALL
-    if(ball.x - ball.radius < 0){
-        comp.score++;
-        resetBall();
-    }else if(ball.x + ball.radius > canvas.width){
-        user.score++;
-    }
-}
+}       
+      
 
-// COLLISION DETECTION FUNCTION
-// b = ball, u = user
+ 
+
+    
+
+   
+        
+    // }
+    
+    // // UPDATES THE SCORE & RESETS THE BALL
+    // if(ball.x - ball.radius < 0){
+    //     comp.score++;
+    //     resetBall();
+    // }else if(ball.x + ball.radius > canvas.width){
+    //     user.score++;
+    // }
+
+// // COLLISION DETECTION FUNCTION
+// // b = ball, p = paddle
 function collison (b, p){
     p.top = p.y;
     p.bottom = p.y + p.height;
@@ -144,18 +168,8 @@ function collison (b, p){
     return b.right > p.left && b.btop < p.bottom && b.left < p.right && b.bottom > p.top;
 }
 
-// CONTROL THE USER'S PADDLE
-canvas.addEventListener('mousemove', movePaddle);
-function movePaddle(evt){
-    let rect = canvas.getBoundingClientRect();
-    user.y = evt.clientY - rect.top - user.height/2;
-}
 
-// AI TO CONTROL THE COMP PADDLE
-let computerLevel = 0.1;
-comp.y += (ball.y - (comp.y + comp.height/2)) * computerLevel;
-
-// RENDER THE GAME
+// // RENDER THE GAME
 function render(){
     drawRect(0, 0, canvas.width, canvas.height, 'black');
     drawText(user.score,canvas.width/4,canvas.height/5, 'white');
@@ -167,9 +181,11 @@ function render(){
 }
 
 function game(){
+    update();
     render();
 }
 
+// LOOP
 const framePerSecond = 50;
 setInterval(game, 1000/framePerSecond);
 
