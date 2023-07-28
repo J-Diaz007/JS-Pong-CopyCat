@@ -1,6 +1,7 @@
 const canvas = document.getElementById('pong');
 const ctx = canvas.getContext('2d');
 
+
 // RECTANGLE FUNCTION FOR GAME
 function drawRect(x,y,w,h,color){
     ctx.fillStyle = color;
@@ -20,7 +21,7 @@ function drawCircle(x, y, r, color){
 
 // TEXT FUNCTION
 function drawText(text, x, y, color){
-    ctx.fillStyle = 'white';
+    ctx.fillStyle = 'black';
     ctx.font = '45px fantasy';
     ctx.fillText(text,x,y);
 }
@@ -72,7 +73,7 @@ const net = {
     y: 0,
     width: 2,
     height: 10,
-    color: 'WHITE',
+    color: 'black',
 }
 
 // DRAW THE NET
@@ -90,7 +91,7 @@ const ball = {
     speed: 5,
     velocityX: 5,
     velocityY: 5,
-    color: 'WHITE',
+    color: 'black',
 }
 
 // RESET BALL FUNCTION
@@ -163,9 +164,9 @@ function collison (b, p){
 
 // // RENDER THE GAME
 function render(){
-    drawRect(0, 0, canvas.width, canvas.height, 'black');
-    drawText(user.score,canvas.width/4,canvas.height/5, 'white');
-    drawText(comp.score,3*canvas.width/4,canvas.height/5, 'white');
+    drawRect(0, 0, canvas.width, canvas.height, 'white');
+    drawText(user.score,canvas.width/4,canvas.height/5, 'black');
+    drawText(comp.score,3*canvas.width/4,canvas.height/5, 'black');
     drawNet();
     drawRect(user.x, user.y, user.width, user.height, user.color);
     drawRect(comp.x, comp.y, comp.width, comp.height, comp.color);
@@ -180,4 +181,6 @@ function game(){
 // LOOP
 const framePerSecond = 50;
 setInterval(game, 1000/framePerSecond);
+
+// DARK MODE FUNCTION
 

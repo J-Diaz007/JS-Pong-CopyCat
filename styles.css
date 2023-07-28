@@ -2,17 +2,20 @@ body {
     display: flex;
     justify-content: center;
     text-align: center;
-    background-color: black;
+    align-items: center;
+    flex-direction: column;
+    background-color: white;
 }
+
 
 header {
     font-size: 4em;
-    color: white;
+    color: black;
     font-family: georgia;
 }
 
 #pong {
-    border: 5px solid white;
+    border: 5px solid black;
     position: absolute;
     margin: auto;
     top:0;
