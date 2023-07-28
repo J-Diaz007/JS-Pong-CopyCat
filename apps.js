@@ -7,10 +7,10 @@ function drawRect(x, y, w, h, color){
     ctx.fillRect(x, y, w, h);
 }
 
-drawRect(0, 0, canvas.width, canvas.height, "black");
+drawRect(0, 0, canvas.width, canvas.height, 'white');
 
 // CIRCLE FUNCTION
-function drawArc(x, y, r, color){
+function drawCircle(x, y, r, color){
     ctx.beginPath();
     ctx.arc(x, y, r, 0, 2 * Math.PI);
     ctx.fillStyle = color;
@@ -18,7 +18,7 @@ function drawArc(x, y, r, color){
     ctx.fill();
 }
 
-drawArc()
+drawCircle(100, 100, 50, 'white')
 
 // TEXT FUNCTION
 function drawText(text, x, y, color){
@@ -163,7 +163,7 @@ function render(){
     drawNet();
     drawRect(user.x, user.y, user.width, user.height, user.color);
     drawRect(comp.x, comp.y, comp.width, comp.height, comp.color);
-    drawArc(ball.x, ball.y, ball.radius, ball.color);
+    drawCircle(ball.x, ball.y, ball.radius, ball.color);
 }
 
 function game(){
