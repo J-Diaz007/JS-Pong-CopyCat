@@ -21,11 +21,10 @@ function drawCircle(x, y, r, color){
 
 // TEXT FUNCTION
 function drawText(text, x, y, color){
-    ctx.fillStyle = 'black';
+    ctx.fillStyle = 'white';
     ctx.font = '45px fantasy';
     ctx.fillText(text,x,y);
 }
-
 
 // // HOW TO MOVE A RECTANGLE TO THE RIGHT
 // // let rectX = 0;
@@ -36,6 +35,10 @@ function drawText(text, x, y, color){
 // // }
 // // setInterval(render, 1000);
 
+// SOUND EFFECTS
+const hit = new Audio();
+
+hit.src = "sfx/hit.mp3";
 
 // // CREATE USER PADDLE
 const user = {
@@ -73,7 +76,7 @@ const net = {
     y: 0,
     width: 2,
     height: 10,
-    color: 'black',
+    color: 'white',
 }
 
 // DRAW THE NET
@@ -91,7 +94,7 @@ const ball = {
     speed: 5,
     velocityX: 5,
     velocityY: 5,
-    color: 'black',
+    color: 'white',
 }
 
 // RESET BALL FUNCTION
@@ -127,6 +130,7 @@ function update(){
     // AI TO CONTROL THE COMP PADDLE
     const computerLevel = 0.1;
     comp.y += (ball.y - (comp.y + comp.height/2)) * computerLevel;
+
     // BALL HITS TOP AND BOTTOM OF SCREEN
     if(ball.y + ball.radius > canvas.height || ball.y - ball.radius < 0){
         ball.velocityY = -ball.velocityY;
@@ -137,6 +141,7 @@ function update(){
 
     if(collison(ball,player)){
         // WHERE THE BALL HITS THE PADDLE
+        hit.play();
         let collidePoint = (ball.y - (player.y + player.height/2));
         collidePoint = collidePoint / (player.height/2);
         let angleRad = collidePoint * Math.PI/4;
@@ -157,14 +162,16 @@ function update(){
     }else if(ball.x + ball.radius > canvas.width){
         user.score++;
         resetBall()
-    }
-}       
+        }
+    }       
 
 // // RENDER THE GAME
 function render(){
-    drawRect(0, 0, canvas.width, canvas.height, 'white');
-    drawText(user.score,canvas.width/4,canvas.height/5, 'black');
-    drawText(comp.score,3*canvas.width/4,canvas.height/5, 'black');
+    drawRect(0, 0, canvas.width, canvas.height, 'black');
+    // DRAW USER SCORE
+    drawText(user.score,canvas.width/4,canvas.height/5, 'white');
+    // DRAW COMPUTER SCORE
+    drawText(comp.score,3*canvas.width/4,canvas.height/5, 'white');
     drawNet();
     drawRect(user.x, user.y, user.width, user.height, user.color);
     drawRect(comp.x, comp.y, comp.width, comp.height, comp.color);
@@ -179,6 +186,4 @@ function game(){
 // LOOP
 const framePerSecond = 50;
 setInterval(game, 1000/framePerSecond);
-
-// DARK MODE FUNCTION
 

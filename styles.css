@@ -4,18 +4,17 @@ body {
     text-align: center;
     align-items: center;
     flex-direction: column;
-    background-color: white;
+    background-color: black;
 }
-
 
 header {
     font-size: 4em;
-    color: black;
+    color: white;
     font-family: georgia;
 }
 
 #pong {
-    border: 5px solid black;
+    border: 5px solid white;
     position: absolute;
     margin: auto;
     top:0;
@@ -24,4 +23,21 @@ header {
     bottom: 0;
 }
 
+canvas {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
+#start, #game-over {
+    color: 'white';
+    text-align: center;
+
+}
+
+#start a, #game-over a {
+    color: 'black';
+    display: inline-block;
+}
+
+#start a:hover, #game-over a:hover {background-color: aqua; color: yellow;}
