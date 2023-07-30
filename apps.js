@@ -2,7 +2,7 @@ const canvas = document.getElementById('pong');
 const ctx = canvas.getContext('2d');
 
 
-// RECTANGLE FUNCTION FOR GAME
+// RECTANGLE FUNCTION
 function drawRect(x,y,w,h,color){
     ctx.fillStyle = color;
     ctx.fillRect(x,y,w,h);
@@ -102,6 +102,22 @@ function resetBall(){
     ball.velocityX = -ball.velocityX;
 }
 
+// // COLLISION DETECTION FUNCTION
+// // b = ball, p = paddle
+function collison (b, p){
+    p.top = p.y;
+    p.bottom = p.y + p.height;
+    p.left = p.x;
+    p.right = p.x + p.width;
+
+    b.top = b.y - b.radius;
+    b.bottom = b.y + b.radius;
+    b.left = b.x - b.radius;
+    b.right = b.x + b.radius;
+
+    return p.left < b.right && p.top < b.bottom && p.right > b.left && p.bottom > b.top;
+}
+
 // FUNCTION UPDATES EVERYTHING
 function update(){
     // // MOVE THE BALL
@@ -111,23 +127,22 @@ function update(){
     // AI TO CONTROL THE COMP PADDLE
     const computerLevel = 0.1;
     comp.y += (ball.y - (comp.y + comp.height/2)) * computerLevel;
-
+    // BALL HITS TOP AND BOTTOM OF SCREEN
     if(ball.y + ball.radius > canvas.height || ball.y - ball.radius < 0){
         ball.velocityY = -ball.velocityY;
     }
 
     // BALL COLLISION
-    const player = (ball.x + ball.radius< canvas.width/2) ? user : comp;
+    const player = (ball.x + ball.radius < canvas.width/2) ? user : comp;
 
-    if(collison(ball, player)){
+    if(collison(ball,player)){
         // WHERE THE BALL HITS THE PADDLE
-        const collidePoint = ball.y - (player.y + player.height/2);
-        collidePoint = collidePoint/player.height/2;
-        const angleRad = collidePoint * Math.PI/4;
+        let collidePoint = (ball.y - (player.y + player.height/2));
+        collidePoint = collidePoint / (player.height/2);
+        let angleRad = collidePoint * Math.PI/4;
 
         // DIRECTION OF BALL WHEN IT HITS A PADDLE
-        const direction = (ball.x < canvas.width/2) ? 1 : -1;
-
+        let direction = (ball.x + ball.radius < canvas.width/2) ? 1 : -1;
         ball.velocityX = direction * ball.speed * Math.cos(angleRad);
         ball.velocityY = ball.speed * Math.sin(angleRad);
 
@@ -144,23 +159,6 @@ function update(){
         resetBall()
     }
 }       
-
-// // COLLISION DETECTION FUNCTION
-// // b = ball, p = paddle
-function collison (b, p){
-    p.top = p.y;
-    p.bottom = p.y + p.height;
-    p.left = p.x;
-    p.right = p.x + p.width;
-
-    b.top = b.y - b.radius;
-    b.bottom = b.y + b.radius;
-    b.left = b.x - b.radius;
-    b.right = b.x + b.radius;
-
-    return b.right > p.left && b.btop < p.bottom && b.left < p.right && b.bottom > p.top;
-}
-
 
 // // RENDER THE GAME
 function render(){
