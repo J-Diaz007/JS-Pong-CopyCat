@@ -28,16 +28,3 @@ canvas {
     justify-content: center;
     align-items: center;
 }
-
-#start, #game-over {
-    color: 'white';
-    text-align: center;
-
-}
-
-#start a, #game-over a {
-    color: 'black';
-    display: inline-block;
-}
-
-#start a:hover, #game-over a:hover {background-color: aqua; color: yellow;}

@@ -37,8 +37,10 @@ function drawText(text, x, y, color){
 
 // SOUND EFFECTS
 const hit = new Audio();
+const win = new Audio();
 
 hit.src = "sfx/hit.mp3";
+win.src = "sfx/win.mp3"
 
 // // CREATE USER PADDLE
 const user = {
@@ -163,7 +165,11 @@ function update(){
         user.score++;
         resetBall()
         }
-    }       
+
+    // CAPS SCORE AT 10
+    
+    
+}       
 
 // // RENDER THE GAME
 function render(){
