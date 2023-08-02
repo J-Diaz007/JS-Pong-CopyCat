@@ -1,7 +1,6 @@
 const canvas = document.getElementById('pong');
 const ctx = canvas.getContext('2d');
 
-
 // RECTANGLE FUNCTION
 function drawRect(x,y,w,h,color){
     ctx.fillStyle = color;
@@ -123,6 +122,18 @@ function collison (b, p){
     return p.left < b.right && p.top < b.bottom && p.right > b.left && p.bottom > b.top;
 }
 
+// ///////////////////////////////////////
+// //////////////////////////////////////
+window.onload = function() {
+
+}
+
+
+
+
+// ///////////////////////////////////////
+// ////////////////////////////////////////
+
 // FUNCTION UPDATES EVERYTHING
 function update(){
     // // MOVE THE BALL
@@ -165,11 +176,10 @@ function update(){
         user.score++;
         resetBall()
         }
-
+}
     // CAPS SCORE AT 10
     
     
-}       
 
 // // RENDER THE GAME
 function render(){
@@ -190,6 +200,7 @@ function game(){
 }
 
 // LOOP
-const framePerSecond = 50;
-setInterval(game, 1000/framePerSecond);
+const loop;
+const framePerSecond = 60;
 
+setInterval(game, 1000/framePerSecond);
