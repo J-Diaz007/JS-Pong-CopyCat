@@ -1,4 +1,4 @@
-Milestone Class Assignment: Classic Pong game (PvE). 
+Milestone Class Assignment: Classic Pong game (PvE). Contolled with mouse movement of up and down.
 
 Sounds are from ZapSplat.
 

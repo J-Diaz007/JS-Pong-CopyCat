@@ -25,6 +25,37 @@ function drawText(text, x, y, color){
     ctx.fillText(text,x,y);
 }
 
+// START GAME FUNCTION
+function startGame() {
+    let startDiv = document.getElementById('start');
+    let gameCanvas = document.getElementById('pong');
+    let gameOver = document.getElementById('game-over');
+    startDiv.style.display = 'none';
+    gameCanvas.style.display = 'block';
+    gameOver.style.display = 'none';
+    start();
+}
+
+// GAME OVER FUNCTION
+function gameOver() {
+    let startDiv = document.getElementById('start');
+    let gameCanvas = document.getElementById('pong');
+    let gameOver = document.getElementById('game-over');
+    startDiv.style.display = 'none';
+    gameCanvas.style.display = 'none';
+    gameOver.style.display = 'block';
+
+    resetBall();
+    clearInterval(loop);
+}
+
+// CHECK SCORE FUNCTION
+// function checkScore() {
+//     if(user.score = 10 || comp.score = 10){
+//         gameOver();
+//     }
+// }
+
 // // HOW TO MOVE A RECTANGLE TO THE RIGHT
 // // let rectX = 0;
 // // function render(){
@@ -122,18 +153,6 @@ function collison (b, p){
     return p.left < b.right && p.top < b.bottom && p.right > b.left && p.bottom > b.top;
 }
 
-// ///////////////////////////////////////
-// //////////////////////////////////////
-window.onload = function() {
-
-}
-
-
-
-
-// ///////////////////////////////////////
-// ////////////////////////////////////////
-
 // FUNCTION UPDATES EVERYTHING
 function update(){
     // // MOVE THE BALL
@@ -200,7 +219,5 @@ function game(){
 }
 
 // LOOP
-const loop;
 const framePerSecond = 60;
-
-setInterval(game, 1000/framePerSecond);
+const loop = setInterval(game, 1000/framePerSecond);

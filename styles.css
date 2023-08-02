@@ -11,6 +11,10 @@ header {
     font-size: 4em;
     color: white;
     font-family: georgia;
+    display: block;
+    text-align: center;
+    margin-top: 50px;
+   
 }
 
 #pong {
@@ -28,3 +32,33 @@ canvas {
     justify-content: center;
     align-items: center;
 }
+
+#start, #game-over {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: #ffffff;
+    padding: 15px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin-top: -100px;
+    margin-left: -100px;
+    height: 200px;
+    width: 250px;
+    text-align: center;
+}
+
+#start a, #game-over a {
+    border: 3px solid white;
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+    border-radius: 15px;
+    cursor: pointer;
+    display: block;
+    width: 200px;
+    text-align: center;
+    font-size: 2em;
+    display: inline-block;
+}
+
+#start a:hover, #game-over a:hover { background-color: white; color: black}
