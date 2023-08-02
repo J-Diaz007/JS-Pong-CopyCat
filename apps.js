@@ -49,13 +49,6 @@ function gameOver() {
     clearInterval(loop);
 }
 
-// CHECK SCORE FUNCTION
-// function checkScore() {
-//     if(user.score = 10 || comp.score = 10){
-//         gameOver();
-//     }
-// }
-
 // // HOW TO MOVE A RECTANGLE TO THE RIGHT
 // // let rectX = 0;
 // // function render(){
@@ -196,8 +189,15 @@ function update(){
         resetBall()
         }
 }
-    // CAPS SCORE AT 10
-    
+
+// CHECK SCORE FUNCTION
+function checkScore() {
+    if(user.score >= 10 || comp.score >= 10){
+
+        gameOver();
+        
+    }
+}
     
 
 // // RENDER THE GAME

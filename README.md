@@ -2,6 +2,10 @@ Milestone Class Assignment: Classic Pong game (PvE). Contolled with mouse moveme
 
 Sounds are from ZapSplat.
 
-**/ * Title: Ping-Pong-Game-JavaScript * Author:(Code Explained) * Date: (2018) * Code version:(v1) * Availability: (https://github.com/CodeExplainedRepo/Ping-Pong-Game-JavaScript.git), (https://www.youtube.com/watch?v=nl0KXCa5pJk)  * **/
+Code Explained (2018). Ping-Pong-Game-JavaScript (v1) https://github.com/CodeExplainedRepo/Ping-Pong-Game-JavaScript.git , https://www.youtube.com/watch?v=nl0KXCa5pJk
 
-**/ * Title: How to Toggle Dark Mode * Author:(W3Schools) * Availability: (https://www.w3schools.com/howto/howto_js_toggle_dark_mode.asp)  * **/
+Reid, David (2022). How to Resize Your JavaScript Games (v1) https://www.youtube.com/watch?v=Jqkcc8ALl10
+
+Reid, David (2022). How to add a start screen to your JavaScript game in under five minutes (v1) https://www.youtube.com/watch?v=FwLMz7jMRac&t=193s
+
+Reid, David (2022). How to create a simple gameloop for your JavaScript Games in under five minutes (v1) https://www.youtube.com/watch?v=QXYT8sEJRZk&t=331s
