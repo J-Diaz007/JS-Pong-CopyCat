@@ -33,12 +33,26 @@ canvas {
     align-items: center;
 }
 
-#start, #game-over {
+#start {
     font-family: Georgia, 'Times New Roman', Times, serif;
     color: #ffffff;
     padding: 15px;
     position: fixed;
     top: 50%;
+    left: 50%;
+    margin-top: -100px;
+    margin-left: -100px;
+    height: 200px;
+    width: 250px;
+    text-align: center;
+}
+
+#game-over {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: #ffffff;
+    padding: 15px;
+    position: fixed;
+    top: 60%;
     left: 50%;
     margin-top: -100px;
     margin-left: -100px;
