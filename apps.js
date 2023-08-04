@@ -25,30 +25,6 @@ function drawText(text, x, y, color){
     ctx.fillText(text,x,y);
 }
 
-// START GAME FUNCTION
-function startGame() {
-    let startDiv = document.getElementById('start');
-    let gameCanvas = document.getElementById('pong');
-    let gameOver = document.getElementById('game-over');
-    startDiv.style.display = 'none';
-    gameCanvas.style.display = 'block';
-    gameOver.style.display = 'none';
-    start();
-}
-
-// GAME OVER FUNCTION
-function gameOver() {
-    let startDiv = document.getElementById('start');
-    let gameCanvas = document.getElementById('pong');
-    let gameOver = document.getElementById('game-over');
-    startDiv.style.display = 'none';
-    gameCanvas.style.display = 'none';
-    gameOver.style.display = 'block';
-
-    resetBall();
-    clearInterval(loop);
-}
-
 // // HOW TO MOVE A RECTANGLE TO THE RIGHT
 // // let rectX = 0;
 // // function render(){
@@ -146,6 +122,18 @@ function collison (b, p){
     return p.left < b.right && p.top < b.bottom && p.right > b.left && p.bottom > b.top;
 }
 
+// GAME OVER FUNCTION
+function gameOver() {
+    let startDiv = document.getElementById('start');
+    let gameCanvas = document.getElementById('pong');
+    let gameOver = document.getElementById('game-over');
+    startDiv.style.display = 'none';
+    gameCanvas.style.display = 'none';
+    gameOver.style.display = 'block';
+    resetBall();
+    clearInterval(loop);
+}
+
 // FUNCTION UPDATES EVERYTHING
 function update(){
     // // MOVE THE BALL
@@ -213,9 +201,23 @@ function render(){
     drawCircle(ball.x, ball.y, ball.radius, ball.color);
 }
 
-function game(){
+// function game(){
+//     update();
+//     render();
+// }
+
+
+// START GAME FUNCTION
+function startGame() {
+    let startDiv = document.getElementById('start');
+    let gameCanvas = document.getElementById('pong');
+    let gameOver = document.getElementById('game-over');
+    startDiv.style.display = 'none';
+    gameCanvas.style.display = 'block';
+    gameOver.style.display = 'none';
     update();
     render();
+    checkScore
 }
 
 // LOOP
