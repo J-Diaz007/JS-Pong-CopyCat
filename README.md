@@ -1,6 +1,7 @@
-Milestone Class Assignment: Classic Pong game (PvE). Contolled with mouse movement of up and down. 
+Milestone Class Assignment: Classic Pong style game (PvE). Contolled with mouse movement of up and down. 
+Used Whiff-Whaff as title because it's an alternate name for Table Tennis. 
 
-Comments from Developer: Collision detection and 
+Comments from Developer: Pulled main content from Ping-Pong-Game-JavaScript youtube video. Biggest challenge was collision detection (velocity). After completing the first video I had a really hard time adding additional content even with other videos as guidance. Since the styles differed from video to video it was a challenge meshing what I learned together. Made multiple mistakes until it started to come together.
 
 Sounds are from ZapSplat.
 

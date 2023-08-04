@@ -7,10 +7,12 @@ const ctx = canvas.getContext('2d');
 const hit = new Audio();
 const win = new Audio();
 const lose = new Audio();
+const wall = new Audio();
 
 hit.src = "sfx/hit.mp3";
 win.src = "sfx/win.mp3"
 lose.src = "sfx/lose.mp3"
+wall.src = "sfx/wall.mp3"
 
 // // CREATE USER PADDLE
 const user = {
@@ -147,12 +149,13 @@ function update(){
     ball.y += ball.velocityY;
     
     // AI TO CONTROL THE COMP PADDLE
-    const computerLevel = 0.1;
+    const computerLevel = 0.05;
     comp.y += (ball.y - (comp.y + comp.height/2)) * computerLevel;
 
     // BALL HITS TOP AND BOTTOM OF SCREEN
     if(ball.y + ball.radius > canvas.height || ball.y - ball.radius < 0){
         ball.velocityY = -ball.velocityY;
+        wall.play();
     }
 
     // BALL COLLISION
