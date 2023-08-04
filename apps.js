@@ -130,7 +130,7 @@ function gameOver() {
     startDiv.style.display = 'none';
     gameCanvas.style.display = 'none';
     gameOver.style.display = 'block';
-    resetBall();
+    // resetBall();
     clearInterval(loop);
 }
 
@@ -171,21 +171,26 @@ function update(){
     // UPDATES THE SCORE & RESETS THE BALL
     if(ball.x - ball.radius < 0){
         comp.score++;
+        if(user.score >= 10){
+            document.write("You win!");
+            gameOver();
+            return;
+        }
         resetBall();
     }else if(ball.x + ball.radius > canvas.width){
         user.score++;
+        if(comp.score >= 10){
+            document.write('You Lose!')
+            gameOver();
+            return;
+        }
         resetBall()
         }
 }
 
 // CHECK SCORE FUNCTION
-function checkScore() {
-    if(user.score >= 10 || comp.score >= 10){
 
-        gameOver();
-        
-    }
-}
+
     
 
 // // RENDER THE GAME
@@ -217,9 +222,8 @@ function startGame() {
     gameOver.style.display = 'none';
     update();
     render();
-    checkScore
 }
 
 // LOOP
 const framePerSecond = 60;
-const loop = setInterval(game, 1000/framePerSecond);
+const loop = setInterval(startGame, 1000/framePerSecond);

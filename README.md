@@ -9,3 +9,5 @@ Reid, David (2022). How to Resize Your JavaScript Games (v1) https://www.youtube
 Reid, David (2022). How to add a start screen to your JavaScript game in under five minutes (v1) https://www.youtube.com/watch?v=FwLMz7jMRac&t=193s
 
 Reid, David (2022). How to create a simple gameloop for your JavaScript Games in under five minutes (v1) https://www.youtube.com/watch?v=QXYT8sEJRZk&t=331s
+
+Abrar (2021). How to Make a Score Checker with Javascript. (v1) https://www.youtube.com/watch?v=wQ9jBG-iy44
