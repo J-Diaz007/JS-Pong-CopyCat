@@ -206,10 +206,10 @@ function render(){
     drawCircle(ball.x, ball.y, ball.radius, ball.color);
 }
 
-// function game(){
-//     update();
-//     render();
-// }
+function game(){
+    update();
+    render();
+}
 
 
 // START GAME FUNCTION
@@ -226,4 +226,4 @@ function startGame() {
 
 // LOOP
 const framePerSecond = 60;
-const loop = setInterval(startGame, 1000/framePerSecond);
+const loop = setInterval(game, 1000/framePerSecond);
