@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Whiff-Whaff</title>
     <link type="text/css" rel="stylesheet" href="styles.css">
-    <link rel="shortcut icon" href="">
+    <link rel="shortcut icon" href="#">
 </head>
 <body>    
     <div>
@@ -21,6 +21,10 @@
     <div id="game-over" style="display: none">
         <h1>Game Over!</h1>
     </div>
+
+    <audio id="myAudio" src="sfx/start.mp3" preload="auto">
+    </audio>
+    <a onClick="togglePlay()">Toggle Music.</a>
 
     <script src="apps.js"></script>
 </body>

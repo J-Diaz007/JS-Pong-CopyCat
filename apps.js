@@ -1,18 +1,18 @@
 const canvas = document.getElementById('pong');
 const ctx = canvas.getContext('2d');
 
-
-
 // SOUND EFFECTS
 const hit = new Audio();
 const win = new Audio();
 const lose = new Audio();
 const wall = new Audio();
+let start = new Audio();
 
 hit.src = "sfx/hit.mp3";
-win.src = "sfx/win.mp3"
-lose.src = "sfx/lose.mp3"
-wall.src = "sfx/wall.mp3"
+win.src = "sfx/win.mp3";
+lose.src = "sfx/lose.mp3";
+wall.src = "sfx/wall.mp3";
+start.src = "sfx/start.mp3";
 
 // // CREATE USER PADDLE
 const user = {
@@ -78,7 +78,7 @@ function startGame() {
     gameOver.style.display = 'none';
     render();
     update();
-    
+    start.play();
 }
 
 function movePaddle(evt){
