@@ -3,6 +3,8 @@ Used Whiff-Whaff as title because it's an alternate name for Table Tennis.
 
 Comments from Developer: Pulled main content from Ping-Pong-Game-JavaScript youtube video. Biggest challenge was collision detection (velocity). After completing the first video I had a really hard time adding additional content even with other videos as guidance. Since the styles differed from video to video it was a challenge meshing what I learned together. Made multiple mistakes until it started to come together. Tried to add a dark mode to my game, but was only able to get the background to change colors. 
 
+
+
 Sounds and music from ZapSplat.
 
 Code Explained (2018). Ping-Pong-Game-JavaScript (v1) https://github.com/CodeExplainedRepo/Ping-Pong-Game-JavaScript.git , https://www.youtube.com/watch?v=nl0KXCa5pJk
